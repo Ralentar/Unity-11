@@ -10,7 +10,7 @@ public class Cube : MonoBehaviour
 {
     private Color _baseColor = Color.grey;
 
-    private bool _is—ollision = false;
+    private bool _isÒCollision = false;
     private float _minDelayTime = 2;
     private float _maxDelayTime = 5;
     private WaitForSeconds _wait;
@@ -27,13 +27,13 @@ public class Cube : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_is—ollision)
+        if (_isÒCollision)
             return;
 
         if (collision.gameObject.TryGetComponent(out Platform platform) == false)
             return;
 
-        _is—ollision = true;
+        _isÒCollision = true;
         Recolor(UnityEngine.Random.ColorHSV());
         StartCoroutine(Disappear());
     }
@@ -49,7 +49,7 @@ public class Cube : MonoBehaviour
         _wait = new WaitForSeconds(UnityEngine.Random.Range(_minDelayTime, _maxDelayTime));
         Recolor(_baseColor);
 
-        _is—ollision = false;
+        _isÒCollision = false;
         transform.position = position;
         transform.rotation = rotation;
 
