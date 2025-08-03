@@ -40,13 +40,13 @@ public class Spawner : MonoBehaviour
         offset += transform.position;
 
         cube.ResetState(offset, transform.rotation);
-        cube.Ñollision += ReleaseCube;
+        cube.Collision += ReleaseCube;
         cube.gameObject.SetActive(true);
     }
 
     private void ActionORelease(Cube cube)
     {
-        cube.Ñollision -= ReleaseCube;
+        cube.Collision -= ReleaseCube;
         cube.gameObject.SetActive(false);
     }
 

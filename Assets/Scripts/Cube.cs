@@ -10,14 +10,14 @@ public class Cube : MonoBehaviour
 {
     private Color _baseColor = Color.grey;
 
-    private bool _isñCollision = false;
+    private bool _isCollision = false;
     private float _minDelayTime = 2;
     private float _maxDelayTime = 5;
     private WaitForSeconds _wait;
     private Rigidbody _rigidbody;
     private Material _material;
 
-    public event Action<Cube> Ñollision;
+    public event Action<Cube> Collision;
 
     private void Awake()
     {
@@ -27,13 +27,13 @@ public class Cube : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_isñCollision)
+        if (_isCollision)
             return;
 
         if (collision.gameObject.TryGetComponent(out Platform platform) == false)
             return;
 
-        _isñCollision = true;
+        _isCollision = true;
         Recolor(UnityEngine.Random.ColorHSV());
         StartCoroutine(Disappear());
     }
@@ -41,7 +41,7 @@ public class Cube : MonoBehaviour
     private IEnumerator Disappear()
     {
         yield return _wait;
-        Ñollision?.Invoke(this);
+        Collision?.Invoke(this);
     }
 
     public void ResetState(Vector3 position, Quaternion rotation)
@@ -49,7 +49,7 @@ public class Cube : MonoBehaviour
         _wait = new WaitForSeconds(UnityEngine.Random.Range(_minDelayTime, _maxDelayTime));
         Recolor(_baseColor);
 
-        _isñCollision = false;
+        _isCollision = false;
         transform.position = position;
         transform.rotation = rotation;
 
